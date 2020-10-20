@@ -1,0 +1,17 @@
+There is a constant number of comparisons and operations. 
+
+The divide complexity is O(1):
+
+T(n) = T(n/2) + O(1) = T(n/2) + O(n^0)
+
+Applying the Master Theorem:
+
+In this case our variables have the following values:
+
+a=1
+b=2
+d=0
+
+so 1=2^0 so we are in the second case where a = b^d therefore our complexity is:
+
+T(n)€ O(n^d log n) -> O(n^0 log n) = O(log n)

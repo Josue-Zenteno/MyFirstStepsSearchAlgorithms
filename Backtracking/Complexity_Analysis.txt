@@ -1,0 +1,85 @@
+Authors: 
+Josue Carlos Zenteno Yave : 50%
+Marina Prieto Pech : 50%
+-----------------------------------------------------------------------
+Complexity Analysis: GREEDY
+
+-----------------------------------------
+intervalSchedule(): [O(n)]
+	For each : O(n)
+-----------------------------------------
+
+-----------------------------------------
+greedyAlgorithm(): [O(n^2)]
+
+	For each : O(n)
+	isCompatible():
+		For : O(n)
+-----------------------------------------
+
+-----------------------------------------
+quicksort(): [O(n log n)]
+-----------------------------------------
+
+-----------------------------------------
+printResults(): [O(n)]
+
+	For Each: O(n)
+	For Each: O(n)
+----------------------------------------
+
+----------------------------------------
+printMenu(): [O(1)]
+----------------------------------------
+
+----------------------------------------	
+Reading fellowships: [O(n)]
+
+	While: O(n)
+----------------------------------------
+
+----------------------------------------
+Greedy Strategy: [O(n^2 log n)]
+
+	Sorting : O(n log n)
+	For loop : O(n)
+		Feasability : O(n)
+----------------------------------------
+
+Is the strategy optimal?
+
+  As in most of the cases the stratregy does not lead to the optimal solution as the element must be ordered by some criteria and this will determine , in our case the heuristics were Longer-Term and Highest total salary. 
+  
+  Following this heuristics we must sort the fellowships following the corresponding criteria and the greedy strategy allow us to build an aproximation to the optimal solution.
+ Taking into account that optimal solution means that we can obtain the highest profit in the given dataset.
+ 
+  A counter example that proves this can be found in the fellowships8.txt dataset as if we follow any of the 4 possible heruistics we only can reach a maximum profif of 2400€ (In our case the combinations that reaches that amount are {8} for the longer term and {8} for the highest total profit). But the best combination of fellowships reaches a total of 3400€. Being this combination {3,4,6}.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Execution time (Greedy)(fellowships8.txt) : 213300 ns
+Execution time (Greedy)(fellowships100.txt) : 666100 ns
+
+-----------------------------------------------------------------------------------------------------
+Complexity Analaysis : BACKTRACKING
+
+Empirical comparison:
+
+Execution time (Backtracking)(fellowships8.txt) : 32100 ns
+Execution time (Greedy)(fellowships8.txt) : 213300 ns
+
+Execution time (Backtracking)(fellowships100.txt) : 1190591500 ns
+Execution time (Greedy)(fellowships100.txt) : 666100 ns
+
+This comparison confirms that the backtracking algorithm becomes more and more inefficent as the value of n (individuals) increases
+but with lower values it keeps faster than the greedy algorithm. 
+
+-----------------------------------------------------------
+
+Complexity Analysis for the backtracking algorithm (in a general way): [O(n*k^n)]
+
+Feasability Test : O(n)
+Recursive calls : We don't know the times that we will make a recursive call, so we assume that there  will be a number of k recursive calls.
+
+Base case : O(n)
+Inductive : O(n) * (1+k^2+...+k^n-1) + k^n*(O(n)) = O(n*k^n)

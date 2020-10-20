@@ -1,0 +1,121 @@
+Complexity Analysis of the Tasks:
+
+
+LAB 1
+-----------------------------------------------------------------------
+Equation 1 : O(1)
+-----------------------------------------------------------------------
+private static long Eq1 (int n) {
+        long result = n * ((2 * n) - 1)
+        return result;
+    }
+
+int n -> T(n) = 1
+result = n * ((2 * n) - 1) -> T(n) = 4
+return result -> T(n) = 1
+
+T(n) = 6 -> O(1)
+-----------------------------------------------------------------------
+Equation 2 Iterative : O(n)
+-----------------------------------------------------------------------
+ private static long Eq2Iterative (int n) {
+        long result = 0;
+
+        for(int i = 0; i < n; i++) {
+            result += (4*i) + 1;
+        }
+        return result;
+    }
+
+int n -> T(n) = 1
+result = 0 -> T(n) = 1
+for(int i = 0; i < n; i++) -> T(n) = 3*n
+	result += (4*i) + 1 -> T(n) = 3
+return result -> T(n) = 1
+
+T(n) = 3+3n -> O(1)+O(n) -> O(n)
+-----------------------------------------------------------------------
+Equation 3 Recursive : O(n)
+-----------------------------------------------------------------------
+private static long Eq2Recursive (int i, long result) {
+        if (i < 0) { 
+            result = 0;
+        } else if ( i == 0) { 
+            result += 1;
+        }else {
+            result += (4*i) +1;
+            result = Eq2Recursive((i-1), result);
+        }
+     	return result;// Final return
+    }
+
+T(0)=T(1)=1
+
+T(n)= 1+T(n-1) = 1+[1+T(n-2)]  
+	
+	if n>2 = 2+T(n-2) 
+	if n>3 =  3+T(n-3)
+	if n>i =  i + T(n-i) 
+
+So, being i = (n-1):
+
+T(n) = (n-1)+T[n-(n-1)] = (n-1)+T(1) = (n-1)+1= n
+
+T(n) € O(n)
+-----------------------------------------------------------------------
+
+
+
+
+LAB 2
+-----------------------------------------------------------------------
+Bisection : O(log n)
+-----------------------------------------------------------------------
+
+ private static double findRoot(double a,double b, double epsilon,Function f){
+        double fa,fc,c,root;
+        c=((a+b)/2);
+        if(Math.abs(f.calculate(c)) <= epsilon){
+            root=c;
+        }else{
+            fa=f.calculate(a);
+            fc=f.calculate(c);
+            if((fa*fc)<0){
+                root = findRoot(a,c,epsilon,f);
+            }else{
+                root = findRoot(c,b,epsilon,f);
+            }
+        }
+        return root;
+    }
+
+
+There is a constant number of comparisons and operations. 
+
+The divide complexity is O(1):
+
+T(n) = T(n/2) + O(1) = T(n/2) + O(n^0)
+
+Applying the Master Theorem:
+
+In this case our variables have the following values:
+
+a=1
+b=2
+d=0
+
+so 1=2^0 so we are in the second case where a = b^d therefore our complexity is:
+
+T(n)€ O(n^d log n) -> O(n^0 log n) = O(log n)
+
+
+
+
+
+
+
+
+
+
+
+
